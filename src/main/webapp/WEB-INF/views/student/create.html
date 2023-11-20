@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create new student</h1>
+<a th:href="@{/students}">Back to student list</a>
+<form th:href="@{/students/create}" method="post">
+    <div>
+        <label>Name:</label><br>
+        <input type="text" name="name" >
+    </div>
+    <div>
+        <label>Age:</label><br>
+        <input type="text" name="age" >
+    </div>
+    <div>
+        <label>Address:</label><br>
+        <input type="text" name="address" >
+    </div>
+    <div>
+        <label>Email:</label><br>
+        <input type="text" name="email" >
+    </div>
+    <div>
+        <label>Classroom:</label><br>
+        <label>
+            <select name="classroom">
+                <option th:each="classrooms : ${classList}" th:value="${classrooms.id}" th:text="${classrooms.className}">
+                    Enter your classroom
+                </option>
+            </select>
+        </label>
+    </div>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>
