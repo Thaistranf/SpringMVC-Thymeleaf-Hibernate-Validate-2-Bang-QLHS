@@ -38,4 +38,11 @@ public class StudentService implements IStudentService {
     public List<Student> search(String keyword) {
         return studentRepository.findStudentByNameContaining(keyword);
     }
+
+//    @Override
+//    public List<Student> findAllStudent() {
+//        return studentRepository.findStudents();
+//    }
+
+
 }

@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <h1>Create new student</h1>
 <a th:href="@{/students}">Back to student list</a>
-<form th:href="@{/students/create}" method="post">
+<form th:action="@{/students/create}" th:object="${student}" method="post">
     <div>
         <label>Name:</label><br>
-        <input type="text" name="name" >
+        <input type="text" name="name" th:field="*{name}">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">Name Error</p>
     </div>
     <div>
         <label>Age:</label><br>
-        <input type="text" name="age" >
+        <input type="text" name="age" th:field="*{age}">
+        <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error">Age Error</p>
     </div>
     <div>
         <label>Address:</label><br>
-        <input type="text" name="address" >
+        <input type="text" name="address" th:field="*{address}">
     </div>
     <div>
         <label>Email:</label><br>
-        <input type="text" name="email" >
+        <input type="text" name="email" th:field="*{email}">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
     </div>
     <div>
         <label>Classroom:</label><br>
         <label>
-            <select name="classroom">
+            <select name="classroom" th:field="*{classroom.id}">
                 <option th:each="classrooms : ${classList}" th:value="${classrooms.id}" th:text="${classrooms.className}">
                     Enter your classroom
                 </option>
             </select>
         </label>
+    </div>
+    <div>
+        <label>Subject:</label><br>
+        <div th:each="subject:${subjectList}">
+            <input type="checkbox" name="subject" th:field="*{subjects}" th:value="${subject.id}" th:text="${subject.subjectName}"><br>
+        </div>
     </div>
     <input type="submit" value="Add">
 </form>

@@ -1,20 +1,14 @@
 package com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model;
 
-import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.Student;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "subject")
 public class Subject {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String subjectName;
-    @ManyToOne
-    private Student student;
 
     public Subject() {
     }

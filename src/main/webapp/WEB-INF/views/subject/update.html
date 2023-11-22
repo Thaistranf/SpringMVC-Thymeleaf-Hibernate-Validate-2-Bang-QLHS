@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit subject</h1>
+<a th:href="@{/subjects}">Back to home</a>
+<form th:action="@{/subjects/update/{id}(id=${subjectUp.id})}" th:object="${subjectUp}" method="post">
+    <label for="id">Id: </label><br>
+    <input type="text" id="id" th:field="*{id}" readonly><br>
+    <label for="subjectName">Classroom: </label><br>
+    <input type="text" id="subjectName" name="subjectName" th:field="*{subjectName}"><br>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>

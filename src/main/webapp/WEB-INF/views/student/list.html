@@ -10,7 +10,7 @@
     <style>
         th, td {
             text-align: center;
-            vertical-align: middle;
+            /*vertical-align: middle;*/
         }
         h1 {
             text-align: center;
@@ -24,13 +24,16 @@
 <h1>Student Management</h1>
 
 <div class="row">
-    <div class="col-4" >
+    <div class="col-3" >
         <a th:href="@{/students/create}" style="padding-left: 20px">Add new student</a>
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <a th:href="@{/classroom}" style="padding-left: 20px">List classroom</a>
     </div>
-    <div class="col-4">
+    <div class="col-3">
+        <a th:href="@{/subjects}" style="padding-left: 20px">List subject</a>
+    </div>
+    <div class="col-3">
         <form class="form-inline my-2 my-lg-0" action="/students/search" method="post">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyword" name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -47,6 +50,7 @@
         <th scope="col">Address</th>
         <th scope="col">Email</th>
         <th scope="col">Classroom</th>
+        <th scope="col">Subject</th>
         <th scope="col" colspan="3">Action</th>
     </tr>
     </thead>
@@ -58,6 +62,11 @@
         <td th:text="${students.address}"></td>
         <td th:text="${students.email}"></td>
         <td th:text="${students.classroom.className}"></td>
+        <td>
+            <ul style="list-style-type: none">
+                <li th:each="subjectL : ${students.subjects}" th:text="${subjectL.getSubjectName()}"></li>
+            </ul>
+        </td>
         <td><a th:href="@{students/update/{id}(id=${students.id})}">Edit</a></td>
         <td><a th:href="@{students/delete/{id}(id=${students.id})}" onclick="return confirm('Xóa nhé???')">Delete</a></td>
         <td><a th:href="@{students/view/{id}(id=${students.id})}">View</a></td>
@@ -76,6 +85,7 @@
             <th scope="col">Address</th>
             <th scope="col">Email</th>
             <th scope="col">Classroom</th>
+            <th scope="col">Subject</th>
         </tr>
         </thead>
         <tbody>
@@ -86,6 +96,11 @@
             <td th:text="${item1.address}"></td>
             <td th:text="${item1.email}"></td>
             <td th:text="${item1.classroom.className}"></td>
+            <td>
+                <ul style="list-style-type: none">
+                    <li th:each="subjectLi : ${item1.subjects}" th:text="${subjectLi.getSubjectName()}"></li>
+                </ul>
+            </td>
         </tr>
         </tbody>
     </table>

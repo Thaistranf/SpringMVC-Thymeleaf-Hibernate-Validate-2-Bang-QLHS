@@ -48,6 +48,10 @@ dependencies {
   //Copy thu vien cau hinh cho JpaRepository
   implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.7.0'
 
+  //Copy thu vien cau hinh validate
+  // https://mvnrepository.com/artifact/javax.validation/validation-api
+  implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
 }
 
 test {

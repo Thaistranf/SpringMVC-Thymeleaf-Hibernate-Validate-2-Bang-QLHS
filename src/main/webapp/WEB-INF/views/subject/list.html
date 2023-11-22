@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1>Classroom</h1>
-<a th:href="@{/classroom/create}">Add new class</a><br>
+<a th:href="@{/subjects/create}">Add new subject</a><br>
 <a th:href="@{/students}">List student</a><br>
 <table class="table table-striped">
     <thead>
@@ -27,11 +27,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each="class : ${listClass}">
-            <th scope="row" th:text="${class.id}"></th>
-            <td th:text="${class.className}"></td>
-            <td><a th:href="@{/classroom/update/{id}(id=${class.id})}">Edit</a></td>
-            <td><a th:href="@{/classroom/delete/{id}(id=${class.id})}" onclick="return confirm('Xóa nhé???')">Delete</a></td>
+        <tr th:each="subject : ${listSubject}">
+            <th scope="row" th:text="${subject.id}"></th>
+            <td th:text="${subject.subjectName}"></td>
+            <td><a th:href="@{/classroom/update/{id}(id=${subject.id})}">Edit</a></td>
+            <td><a th:href="@{/classroom/delete/{id}(id=${subject.id})}" onclick="return confirm('Xóa nhé???')">Delete</a></td>
         </tr>
     </tbody>
 </table>

@@ -49,4 +49,10 @@ public class ClassroomController {
         classroomService.save(classroom);
         return "redirect:/classroom";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        classroomService.remove(id);
+        return "redirect:/classroom";
+    }
 }
