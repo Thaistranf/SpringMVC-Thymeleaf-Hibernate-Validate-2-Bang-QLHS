@@ -32,6 +32,12 @@
         <label>Classroom: </label>
         <label th:text="${studentView.classroom.getClassName()}"></label>
     </div>
+    <div>
+        <label>Subject: </label>
+        <ol type="1">
+            <li th:each="subjectLi : ${studentView.subjects}" th:text="${subjectLi.getSubjectName()}"></li>
+        </ol>
+    </div>
 </div>
 </body>
 </html>

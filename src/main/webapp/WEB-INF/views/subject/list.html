@@ -15,14 +15,14 @@
     </style>
 </head>
 <body>
-<h1>Classroom</h1>
+<h1>Subject</h1>
 <a th:href="@{/subjects/create}">Add new subject</a><br>
 <a th:href="@{/students}">List student</a><br>
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Classroom</th>
+            <th scope="col">Subject</th>
             <th scope="col" colspan="2">Action</th>
         </tr>
     </thead>
@@ -30,8 +30,8 @@
         <tr th:each="subject : ${listSubject}">
             <th scope="row" th:text="${subject.id}"></th>
             <td th:text="${subject.subjectName}"></td>
-            <td><a th:href="@{/classroom/update/{id}(id=${subject.id})}">Edit</a></td>
-            <td><a th:href="@{/classroom/delete/{id}(id=${subject.id})}" onclick="return confirm('Xóa nhé???')">Delete</a></td>
+            <td><a th:href="@{/subjects/update/{id}(id=${subject.id})}">Edit</a></td>
+            <td><a th:href="@{/subjects/delete/{id}(id=${subject.id})}" onclick="return confirm('Xóa nhé???')">Delete</a></td>
         </tr>
     </tbody>
 </table>

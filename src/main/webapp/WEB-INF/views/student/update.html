@@ -34,6 +34,12 @@
             </select>
         </label>
     </div>
+    <div>
+        <label>Subject:</label><br>
+        <div th:each="subject:${subjectList}">
+            <input type="checkbox" name="subject" th:field="*{subjects}" th:value="${subject.id}" th:text="${subject.subjectName}"><br>
+        </div>
+    </div>
     <input type="submit" value="Edit">
 </form>
 </body>
