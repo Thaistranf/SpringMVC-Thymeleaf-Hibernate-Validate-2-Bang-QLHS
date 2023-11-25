@@ -1,8 +1,7 @@
 package com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.student;
 
-import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.Student;
+import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.student.Student;
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.IGeneralService;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

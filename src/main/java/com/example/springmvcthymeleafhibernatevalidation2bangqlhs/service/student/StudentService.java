@@ -1,6 +1,6 @@
 package com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.student;
 
-import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.Student;
+import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.student.Student;
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

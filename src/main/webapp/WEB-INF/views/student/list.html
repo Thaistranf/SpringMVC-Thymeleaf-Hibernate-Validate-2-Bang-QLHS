@@ -8,15 +8,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <style>
-        th, td {
+        h1, th, td {
             text-align: center;
             /*vertical-align: middle;*/
         }
-        h1 {
-            text-align: center;
-        }
         .row {
             margin-bottom: 10px;
+        }
+        .a {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            max-width: 200px;  /* Ảnh không vượt quá chiều rộng của ô */
+            max-height: 200px; /* Ảnh không vượt quá chiều cao của ô */
+            width: auto;      /* Tự động điều chỉnh chiều rộng */
+            height: auto;     /* Tự động điều chỉnh chiều cao */
+            display: block;   /* Loại bỏ khoảng trắng dư thừa dưới ảnh */
         }
     </style>
 </head>
@@ -46,6 +57,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
             <th scope="col">Address</th>
@@ -58,6 +70,7 @@
         <tbody>
         <tr th:each="students : ${studentList}">
             <th scope="row" th:text="${students.id}"></th>
+            <td class="a"><img th:src="@{'/static/image/' + ${students.image}}" alt="" src=""></td>
             <td th:text="${students.name}"></td>
             <td th:text="${students.age}"></td>
             <td th:text="${students.address}"></td>
@@ -82,6 +95,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
             <th scope="col">Address</th>
@@ -93,6 +107,7 @@
         <tbody>
         <tr th:each="item1:${searchStudent}">
             <th scope="row" th:text="${item1.id}"></th>
+            <td class="a"><img th:src="@{'/static/image/' + ${item1.image}}" alt="" src=""></td>
             <td th:text="${item1.name}"></td>
             <td th:text="${item1.age}"></td>
             <td th:text="${item1.address}"></td>

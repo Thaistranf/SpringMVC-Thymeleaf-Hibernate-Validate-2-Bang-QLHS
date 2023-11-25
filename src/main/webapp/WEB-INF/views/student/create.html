@@ -13,7 +13,11 @@
 <body>
 <h1>Create new student</h1>
 <a th:href="@{/students}">Back to student list</a>
-<form th:action="@{/students/create}" th:object="${student}" method="post">
+<form th:action="@{/students/create}" th:object="${student}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+    <div>
+        <label>Image:</label><br>
+        <input type="file" name="image" th:field="*{image}">
+    </div>
     <div>
         <label>Name:</label><br>
         <input type="text" name="name" th:field="*{name}">

@@ -6,13 +6,17 @@ import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.classr
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.classroom.IClassroomService;
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.student.IStudentService;
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.student.StudentService;
+import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.subject.ISubjectService;
+import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.service.subject.SubjectService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -23,6 +27,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -41,10 +46,14 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("com.example.springmvcthymeleafhibernatevalidation2bangqlhs")
 @EnableJpaRepositories("com.example.springmvcthymeleafhibernatevalidation2bangqlhs.repository")
+@PropertySource("classpath:file_upload.properties")
 @EnableSpringDataWebSupport
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
+
+    @Value("${file-upload}")
+    private String fileUpload;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -120,6 +129,20 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return properties;
     }
 
+    // 2 cái bean de cau hinh cho upload file
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSizePerFile(999999999);
+        return resolver;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/image/**")
+                .addResourceLocations("file:" + fileUpload);
+    }
+
     @Bean
     public IStudentService studentService(){
         return new StudentService();
@@ -128,6 +151,11 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     @Bean
     public IClassroomService classroomService(){
         return new ClassroomService();
+    }
+
+    @Bean
+    public ISubjectService subjectService(){
+        return new SubjectService();
     }
 
     // cấu hình formatter
