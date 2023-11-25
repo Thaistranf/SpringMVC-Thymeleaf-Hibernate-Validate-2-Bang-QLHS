@@ -4,11 +4,6 @@ import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.Classroo
 import com.example.springmvcthymeleafhibernatevalidation2bangqlhs.model.Subject;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,23 +11,17 @@ public class StudentForm {
     private Long id;
 
     private MultipartFile image;
-    @NotEmpty(message = "Your name cannot be empty.")    //Ten bat buoc phai nhap vao (không để trống)
-    @Size(min = 2, max = 30, message = "Your name is from 2 to 30 characters")    //độ dài tối thiểu 2 ký tự, tối đa 30 ký tự, kieu String dung @Size
+
     private String name;
 
-    //    @NotEmpty(message = "Your age cannot be null.")
-    @Min(value = 5, message = "Min age is 5")                //Tuoi co giá trị nhỏ nhất là 5, kieu number dung @Min / @Max
     private int age;
+
     private String address;
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "test@gmail.com")
+
     private String email;
 
     private Classroom classroom;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name = "student_subject",
-//            joinColumns = @JoinColumn(name = "student_id"),
-//            inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private Set<Subject> subjects;
 
     public StudentForm() {

@@ -40,7 +40,7 @@
     <div>
         <label>Classroom:</label><br>
         <label>
-            <select name="classroom" th:field="*{classroom.id}">
+            <select name="classroom" th:field="*{classroom}">
                 <option th:each="classrooms : ${classList}" th:value="${classrooms.id}" th:text="${classrooms.className}">
                     Enter your classroom
                 </option>

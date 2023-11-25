@@ -40,7 +40,8 @@ public class StudentController {
     private String fileUpload;
 
     @ModelAttribute("classList")
-    //Khai bao "classList" de lay ra ds classroom dung duoc o nhieu file.html khac nhau trong views, ma ko can khoi tao nhieu lan o moi method create / update / delete ...
+    // Khai bao "classList" de lay ra ds classroom dung duoc o nhieu file.html khac nhau trong views,
+    // ma ko can khoi tao nhieu lan o moi method create / update / delete ...
     public Iterable<Classroom> classrooms() {
         return classroomService.findAll();
     }
